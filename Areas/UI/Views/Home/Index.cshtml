@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<!--Api Calls-->
+<section id="newDeals">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Cyber Deals!!</h2>
+            </div>
+        </div>
+        <div id="searchWrapper">
+            <input type="text"
+                   name="searchBar"
+                   id="searchBar"
+                   placeholder="Search for Product" />
+        </div>
+        <div id="newProducts" class="row"></div>
+        <div id="btn-container"></div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="~/js/externalApi.js"></script>
+}

@@ -1,0 +1,50 @@
+﻿<!-- Sidebar -->
+<div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"><a class="list-group-item-action" href="/Panel/FrontPage"><i class="fa fa-pie-chart fa-2x"></i>Admin Dashboard</a></div>
+    <div class="clearfix"></div>
+    <div class="list-group list-group-flush">
+        <a data-toggle="collapse" href="#collapseExample" aria-expanded="true" class="list-group-item list-group-item-action bg-light"><i class=" fa fa-plus-circle fa-2x"></i>Pages</a>
+        <div class="clearfix"></div>
+        <div class="collapse in" id="collapseExample">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-controller="Home" asp-action="HomeEdit">
+                        <i class="fa fa-home fa-2x"></i>Home-Page
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-controller="Home" asp-action="Edit">Edit Home-Page</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-controller="Home" asp-action="Index">About-Page</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-area="Admin" asp-controller="MyMessages" asp-action="Index">
+                        <i class="fa fa-envelope-o fa-2x"></i>My Messages
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-area="Admin" asp-controller="Blog" asp-action="Index">
+                        <i class="fa fa-pencil-square-o fa-2x"></i>My Posts
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-area="Admin" asp-controller="MyPortfolio" asp-action="Index">
+                        <i class="fa fa-sticky-note fa-2x"></i> Portfolio-list
+                    </a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="list-group-item list-group-item-action bg-light link-collapse" asp-controller="Members" asp-action="Index">
+                        <i class="fa fa-users fa-2x"></i> Member-List
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+        <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-bookmark-o fa-2x"></i>Overview</a>
+        <a asp-controller="Calendar" asp-action="Index" class="list-group-item list-group-item-action bg-light">
+            <i class="fa fa-calendar fa-2x"></i>Events
+        </a>
+        <a href="#" class="list-group-item list-group-item-action bg-light"><i class="fa fa-play fa-2x"></i>Status</a>
+    </div>
+</div>
