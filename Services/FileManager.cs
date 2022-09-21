@@ -21,6 +21,11 @@ namespace AspnetcoreEcommercedemo.Services
             return new FileStream(Path.Combine(_imagePath, image), FileMode.Open, FileAccess.Read);
         }
 
+        public bool RemoveImage(string image)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<string> SaveImage(IFormFile image)
         {
             try

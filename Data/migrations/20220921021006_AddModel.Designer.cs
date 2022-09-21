@@ -6,17 +6,93 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AspnetcoreEcommercedemo.Data.Migrations
+namespace AspnetcoreEcommercedemo.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220908110326_AddFirstModel")]
-    partial class AddFirstModel
+    [Migration("20220921021006_AddModel")]
+    partial class AddModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "5.0.17");
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Body")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Category")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Comments.MainComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("BlogId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("MainComment");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Comments.SubComment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MainCommentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainCommentId");
+
+                    b.ToTable("SubComments");
+                });
 
             modelBuilder.Entity("AspnetcoreEcommercedemo.Models.ProductTypes", b =>
                 {
@@ -31,6 +107,21 @@ namespace AspnetcoreEcommercedemo.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.SpecialTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpecialTags");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -229,6 +320,22 @@ namespace AspnetcoreEcommercedemo.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Comments.MainComment", b =>
+                {
+                    b.HasOne("AspnetcoreEcommercedemo.Models.Blog", null)
+                        .WithMany("MainComments")
+                        .HasForeignKey("BlogId");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Comments.SubComment", b =>
+                {
+                    b.HasOne("AspnetcoreEcommercedemo.Models.Comments.MainComment", null)
+                        .WithMany("SubComments")
+                        .HasForeignKey("MainCommentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -278,6 +385,16 @@ namespace AspnetcoreEcommercedemo.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Blog", b =>
+                {
+                    b.Navigation("MainComments");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Comments.MainComment", b =>
+                {
+                    b.Navigation("SubComments");
                 });
 #pragma warning restore 612, 618
         }

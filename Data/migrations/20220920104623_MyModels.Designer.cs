@@ -6,11 +6,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace AspnetcoreEcommercedemo.Data.Migrations
+namespace AspnetcoreEcommercedemo.Data.migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220918222424_BlogModel")]
-    partial class BlogModel
+    [Migration("20220920104623_MyModels")]
+    partial class MyModels
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

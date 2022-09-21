@@ -16,6 +16,7 @@ namespace AspnetcoreEcommercedemo.Data
         }
 
         public DbSet<ProductTypes> ProductTypes { get; set; }
+        public DbSet<SpecialTag> SpecialTags { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<SubComment> SubComments { get; set; }
     }

@@ -17,10 +17,5 @@ namespace AspnetcoreEcommercedemo.Interfaces
         void AddSubComment(SubComment comment);
         Task<bool> SaveChangesAsync();
 
-
-
-
-
-
     }
 }

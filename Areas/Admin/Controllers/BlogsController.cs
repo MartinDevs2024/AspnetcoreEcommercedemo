@@ -34,9 +34,7 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
         public IActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return View(new BlogViewModel());
-            }
             else
             {
                 var blog = _repo.GetBlog((int)id);
@@ -69,10 +67,11 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
             {
                 blog.Image = vm.CurrentImage;
             }
-            else 
+            else
             {
                 blog.Image = await _fileManager.SaveImage(vm.Image);
             }
+
             if (blog.Id > 0)
                 _repo.UpdateBlog(blog);
             else
@@ -93,7 +92,7 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
         }
 
 
-        #region API
+        #region 
         [HttpGet]
         public IActionResult GetAll()
         {

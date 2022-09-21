@@ -30,9 +30,10 @@ namespace AspnetcoreEcommercedemo.Services
 
         public Blog GetBlog(int id)
         {
-            return _context.Blogs.Include(p => p.MainComments)
-                     .ThenInclude(m => m.SubComments)
-                     .FirstOrDefault(p => p.Id == id);
+            return _context.Blogs
+                .Include(p => p.MainComments)
+                .ThenInclude(m => m.SubComments)
+                .FirstOrDefault(p => p.Id == id);
         }
 
         public void RemoveBlog(int id)
@@ -45,6 +46,11 @@ namespace AspnetcoreEcommercedemo.Services
             _context.Blogs.Update(blog);
         }
 
+        public void AddSubComment(SubComment comment)
+        {
+            _context.SubComments.Add(comment);
+        }
+
         public async Task<bool> SaveChangesAsync()
         {
             if (await _context.SaveChangesAsync() > 0)
@@ -53,11 +59,5 @@ namespace AspnetcoreEcommercedemo.Services
             }
             return false;
         }
-
-        public void AddSubComment(SubComment comment)
-        {
-            _context.SubComments.Add(comment);
-        }
-
     }
 }
