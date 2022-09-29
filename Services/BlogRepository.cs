@@ -51,7 +51,7 @@ namespace AspnetcoreEcommercedemo.Services
             _context.SubComments.Add(comment);
         }
 
-        public async Task<bool> SaveChangesAsync()
+        public async Task<bool> SaveChangeAsync()
         {
             if (await _context.SaveChangesAsync() > 0)
             {

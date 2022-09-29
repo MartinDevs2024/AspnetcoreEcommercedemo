@@ -6,31 +6,39 @@
 
 }
 
-<br />
-
-<h2 class="text-info">Edit Product Type</h2>
-<form asp-action="Edit" method="post">
-    <div class="p4 rounded border">
-        <input type="hidden" asp-for="Id" />
-        <div asp-validation="ModelOnly" class="text-danger"></div>
-        <div class="form-group row">
-            <div class="col-2">
-                <label asp-for="ProductType"></label>
+<div class="d-flex" id="wrapper">
+    <partial name="_AdminNavbar" />
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <a class="btn btn-warning float-right" asp-area="Admin" asp-controller="ProductTypes" asp-action="Create">Add-ProductTypes</a>
+        </nav>
+        <h2 class="text-info">Edit Product Type</h2>
+        <form asp-action="Edit" method="post">
+            <div class="p4 rounded border">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation="ModelOnly" class="text-danger"></div>
+                <div class="form-group row">
+                    <div class="col-2">
+                        <label asp-for="ProductType"></label>
+                    </div>
+                    <div class="col-5">
+                        <input asp-for="ProductType" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ProductType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Update" />
+                    <a asp-action="Index" class="btn btn-success">Back to list</a>
+                </div>
             </div>
-            <div class="col-5">
-                <input asp-for="ProductType" class="form-control" />
-            </div>
-            <span asp-validation-for="ProductType" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Update" />
-            <a asp-action="Index" class="btn btn-success">Back to list</a>
-        </div>
-
+        </form>
     </div>
-</form>
+</div>
 @section scripts {
- @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
 }
 

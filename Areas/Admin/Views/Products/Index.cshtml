@@ -1,0 +1,121 @@
+﻿@model IEnumerable<AspnetcoreEcommercedemo.Models.Products>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="d-flex" id="wrapper">
+    <partial name="_AdminNavbar" />
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <a class="btn btn-warning float-right" asp-area="Admin" asp-controller="Products" asp-action="Create">Add-Product</a>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-info">Product List</h2>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; Add New Product</a>
+                </div>
+            </div>
+            <form method="post">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <input type="number" class="form-control" name="lowAmount" />
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="number" class="form-control" name="largeAmount" />
+                    </div>
+                    <div class="col-lg-3">
+                        <input type="submit" class="btn btn-success" value="Search" />
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </form>
+            <br />
+            <div>
+                <table class="table table-striped border" id="myTable">
+                    <thead>
+                        <tr class="table-info">
+                            <th>
+                                @Html.DisplayNameFor(c => c.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c => c.Price)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c=>c.Image)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c => c.ProductColor)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c => c.IsAvailable)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c => c.ProductTypeId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(c => c.SpecialTagId)
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Price</td>
+                                <td>@item.Image</td>
+                                <td>@item.ProductColor</td>
+                                <td>@item.IsAvailable</td>
+                                <td>@item.ProductTypes.ProductType</td>
+                                <td>@item.SpecialTag.Name</td>
+                                <td>
+                                    <partial name="_ButtonPartial" model="@item.Id" />
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /#wrapper -->
+</div>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#myTable').DataTable({
+            });
+        });
+        $(function () {
+                    var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}
+
+
+

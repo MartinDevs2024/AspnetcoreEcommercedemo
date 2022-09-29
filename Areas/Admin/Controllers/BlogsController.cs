@@ -22,7 +22,8 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var blog = _repo.GetAllBlogs().ToList();
+            return View(blog);
         }
 
         public IActionResult Details(int id) 
@@ -54,7 +55,7 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(BlogViewModel vm)
         {
-            var blog = new Blog
+            var blog = new Models.Blog
             {
                 Id = vm.Id,
                 Title = vm.Title,
@@ -76,12 +77,11 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
                 _repo.UpdateBlog(blog);
             else
                 _repo.AddBlog(blog);
-            if (await _repo.SaveChangesAsync())
+            if (await _repo.SaveChangeAsync())
                 return RedirectToAction("Index");
             else
                 return View(blog);
         }
-
 
         [HttpGet("/Image/{image}")]
         [ResponseCache(CacheProfileName = "Monthly")]
@@ -91,7 +91,6 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
             return new FileStreamResult(_fileManager.ImageStream(image), $"image/{mine}");
         }
 
-
         #region 
         [HttpGet]
         public IActionResult GetAll()
@@ -100,7 +99,19 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
             return Json(new { data = objFromDb });
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var objFromDb = _repo.GetBlog(id);
+            if (objFromDb == null)
+            {
+                return Json(new { success = false, message = "Error while Deleting" });
+            }
+            _repo.RemoveBlog(id);
+            await _repo.SaveChangeAsync();
+            return Json(new { success = true, message = "Delete Successfully" });
 
+        }
 
         #endregion
     }

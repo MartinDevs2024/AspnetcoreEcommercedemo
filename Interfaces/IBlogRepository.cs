@@ -15,7 +15,7 @@ namespace AspnetcoreEcommercedemo.Interfaces
         void UpdateBlog(Blog blog);
         void RemoveBlog(int id);
         void AddSubComment(SubComment comment);
-        Task<bool> SaveChangesAsync();
+        Task<bool> SaveChangeAsync();
 
     }
 }

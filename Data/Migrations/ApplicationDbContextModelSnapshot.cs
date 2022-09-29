@@ -92,6 +92,29 @@ namespace AspnetcoreEcommercedemo.Data.migrations
                     b.ToTable("SubComments");
                 });
 
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.MyMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MyMessages");
+                });
+
             modelBuilder.Entity("AspnetcoreEcommercedemo.Models.ProductTypes", b =>
                 {
                     b.Property<int>("Id")
@@ -105,6 +128,43 @@ namespace AspnetcoreEcommercedemo.Data.migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Products", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProductColor")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("ProductTypeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SpecialTagId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductTypeId");
+
+                    b.HasIndex("SpecialTagId");
+
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("AspnetcoreEcommercedemo.Models.SpecialTag", b =>
@@ -332,6 +392,25 @@ namespace AspnetcoreEcommercedemo.Data.migrations
                         .HasForeignKey("MainCommentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("AspnetcoreEcommercedemo.Models.Products", b =>
+                {
+                    b.HasOne("AspnetcoreEcommercedemo.Models.ProductTypes", "ProductTypes")
+                        .WithMany()
+                        .HasForeignKey("ProductTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AspnetcoreEcommercedemo.Models.SpecialTag", "SpecialTag")
+                        .WithMany()
+                        .HasForeignKey("SpecialTagId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductTypes");
+
+                    b.Navigation("SpecialTag");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

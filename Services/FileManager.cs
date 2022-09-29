@@ -14,16 +14,11 @@ namespace AspnetcoreEcommercedemo.Services
         private string _imagePath;
         public FileManager(IConfiguration config)
         {
-            _imagePath = config["Path: Images"];
+            _imagePath = config["Path:Images"];
         }
         public FileStream ImageStream(string image)
         {
             return new FileStream(Path.Combine(_imagePath, image), FileMode.Open, FileAccess.Read);
-        }
-
-        public bool RemoveImage(string image)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<string> SaveImage(IFormFile image)
@@ -35,8 +30,6 @@ namespace AspnetcoreEcommercedemo.Services
                 {
                     Directory.CreateDirectory(save_path);
                 }
-                //Internet Explorer Error C:/User/Foo/image.jpg
-                //var fileName = image.FileName;
                 var mine = image.FileName.Substring(image.FileName.LastIndexOf('.'));
                 var fileName = $"img_{DateTime.Now.ToString("dd-MM-yyyy-HH-mm-ss")}{mine}";
 

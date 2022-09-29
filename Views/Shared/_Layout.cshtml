@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/styles/Layout/_AdminPanel.css" rel="stylesheet" />
     <link href="~/styles/Layout/_contact.css" rel="stylesheet" />
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -30,11 +35,25 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">ProductTypes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">SpecialTags</a>
+                        </li>*@
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin Panel
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">Admin/Special-tags</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">Admin/Product-types</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Products" asp-action="Index">Admin/Products</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Blogs" asp-action="Index">Admin/MyBog</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="MyMessages" asp-action="Index">Admin/MyMessages</a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">Admin/Categories</a>
+                            </div>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -42,17 +61,13 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+   
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - AspnetcoreEcommercedemo - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
+    <partial name="_Footer" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
