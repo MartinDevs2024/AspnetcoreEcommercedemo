@@ -1,40 +1,32 @@
-﻿var dataTable;
-
+﻿let dataTable;
 
 $(document).ready(function () {
     loadDataTable();
-    console.log(url);
-})
+});
 
 function loadDataTable() {
-    dataTable = $("#myBlog").DataTable({
+    dataTable = $("#mymessages").DataTable({
         "ajax": {
-            "url": "/Admin/MyBlog/GetAll"
+            "url": "/Admin/MyMessages/GetAll"
         },
         "columns": [
-            { "data": "title", "width": "15%" },
-            { "data": "body", "width": "15%" },
-            { "data": "image", "width": "15%" },
-            { "data": "description", "width": "15%" },
-            { "data": "category", "width": "15%" },
-            { "data": "tags", "width": "15%" },
-            { "data": "created", "width": "15%" },
+            { "data": "name", "width": "25%" },
+            { "data": "email", "width": "25%" },
+            { "data": "message", "width": "25%" },
             {
                 "data": "id",
                 "render": function (data) {
-                    return ` <div class="text-center">
-                                <a href="/Admin/MyBlog/Edit/${data}" class="btn btn-success text-white" style="cursor:pointer">
-                                    <i class="fas fa-edit"></i> 
-                                </a>
-                                <a onclick=Delete("/Admin/MyBlog/Delete/${data}") class="btn btn-danger text-white" style="cursor:pointer">
-                                    <i class="fas fa-trash-alt"></i>
-                                </a>
+                    return `
+                            <a onclick=Delete("/Admin/MyMessages/Delete/${data}") class="btn btn-success text-white" style="cursor:pointer">
+                                <i class="fas fa-trash-alt"></i> &nbsp;
+                            </a>
                             </div>`;
-                }, "width": "40%"
+                }, "width": "20%"
             }
         ]
     });
 }
+
 function Delete(url) {
     swal({
         title: "Are you sure you want to Delete?",
@@ -56,10 +48,6 @@ function Delete(url) {
                     }
                 }
             })
-
         }
-
     });
-
-
 }
