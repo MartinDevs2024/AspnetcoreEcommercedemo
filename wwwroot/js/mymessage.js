@@ -1,15 +1,17 @@
-﻿//Get values
-let name, email, message;
+﻿
 let submitForm = document.querySelector("#messageForm");
+let name, email, message;
 //Add Even Listener
 submitForm.addEventListener("submit", submitData);
-function getValues() {
+
+// Submit Function
+function submitData(e) {
+    e.preventDefault();
+
     name = document.getElementById("MyMessage_Name").value;
     email = document.getElementById("MyMessage_Email").value;
     message = document.getElementById("MyMessage_Message").value;
-}
-// Validation
-function validate() {
+
     if (name === "") {
         alert("Please enter your name !!!");
         return false;
@@ -22,12 +24,6 @@ function validate() {
         alert("Please enter your Message !!!");
         return false;
     };
-}
-// Submit Function
-function submitData(e) {
-    e.preventDefault();
-    getValues();
-    validate();
     fetch('/UI/Messages/Create', {
         method: 'POST',
         headers: {
