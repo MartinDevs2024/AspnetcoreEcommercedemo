@@ -69,7 +69,7 @@ const displayProducts = (products) => {
                                    <img class="card-img-top" width="40" src="${product.image}" alt="card image cap">
                                    <div class="card-body">
                                         <h5 class="card-title">${product.category}</h5>
-                                        <a href="#" class="btn btn-primary">Go to Products</a>
+                                        <a href="/UI/Product" class="btn btn-primary">Go to Product</a>
                                    </div>
                               </div>
                          </div>`;
