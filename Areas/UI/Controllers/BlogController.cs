@@ -26,17 +26,5 @@ namespace AspnetcoreEcommercedemo.Areas.UI.Controllers
         {
             return View(_repo.GetBlog(id));
         }
-
-        #region
-
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var objFromDb = _repo.GetAllBlogs();
-            return Json(new { data = objFromDb });
-
-        }
-
-        #endregion
     }
 }
