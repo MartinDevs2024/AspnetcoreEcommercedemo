@@ -1,6 +1,7 @@
 ﻿@using System.Net.Http
 @using AspnetcoreEcommercedemo.Utility
 @using Microsoft.AspNetCore.Http
+
 @inject IHttpContextAccessor HttpContextAccessor
 @{ 
     var userRole = HttpContextAccessor.HttpContext.Session.GetString("roleName");
@@ -62,28 +63,29 @@
                         @*<li class="nav-item">
             <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">SpecialTags</a>
         </li>*@
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Admin Panel
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">Admin/Special-tags</a>
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">Admin/Product-types</a>
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Products" asp-action="Index">Admin/Products</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Blogs" asp-action="Index">Admin/MyBog</a>
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="MyMessages" asp-action="Index">Admin/MyMessages</a>
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">Admin/Categories</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                User / Company
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Admin/Company</a>
-                            </div>
-                        </li>
+                        @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Admin Panel
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Company" asp-action="Index">Admin/Company</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="User" asp-action="Index">Admin/User</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">Admin/Special-tags</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="ProductTypes" asp-action="Index">Admin/Product-types</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Products" asp-action="Index">Admin/Products</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Blogs" asp-action="Index">Admin/MyBog</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="MyMessages" asp-action="Index">Admin/MyMessages</a>
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="Categories" asp-action="Index">Admin/Categories</a>
+                                </div>
+                            </li>
+
+
+
+                        }
+
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

@@ -1,5 +1,7 @@
 ﻿using AspnetcoreEcommercedemo.Data;
 using AspnetcoreEcommercedemo.Models;
+using AspnetcoreEcommercedemo.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;

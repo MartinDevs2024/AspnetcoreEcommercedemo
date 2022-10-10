@@ -1,5 +1,7 @@
 ﻿using AspnetcoreEcommercedemo.Data;
 using AspnetcoreEcommercedemo.Models;
+using AspnetcoreEcommercedemo.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,7 @@ using System.Threading.Tasks;
 namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;

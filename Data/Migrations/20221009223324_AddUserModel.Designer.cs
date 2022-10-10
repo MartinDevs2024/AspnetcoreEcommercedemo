@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AspnetcoreEcommercedemo.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221009170711_AddUserModel")]
+    [Migration("20221009223324_AddUserModel")]
     partial class AddUserModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
