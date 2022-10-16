@@ -43,10 +43,10 @@
                            <img style="width:100%" class="img-thumbnail" src="/content/blog/${blog.image}" />
                            <h2 class="blog-post-title">${blog.title}</h2>
                             <div class="blog-post-meta bg-light p-3 mb-3">
-                            @Html.Raw(Model.Body)
+                            ${blog.body}
                             </div>
                     </div>
-
+                    <a class="btn btn-info" href="/ui/blog" >Go Back To List</a>
             `;
             blogList.innerHTML = htmlStrings
         };
