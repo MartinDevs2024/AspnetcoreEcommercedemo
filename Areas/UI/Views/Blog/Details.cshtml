@@ -1,0 +1,54 @@
+﻿@model Blog
+
+@{
+    ViewBag.Title = "Detail";
+    ViewBag.Description = "Model.Description";
+    ViewBag.Keywords = $"{Model.Tags?.Replace(",", "")}{Model.Category}";
+}
+
+
+<section class="page-hero">
+    <div class="section-center">
+        <h3 class="page-hero-title">Home / MyBlog-Details</h3>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <input asp-for="@Model.Id" type="hidden" />
+        <div class="row p-5" id="blogs"></div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        const blogId = document.getElementById("Id").value;
+        const blogList = document.getElementById("blogs");
+
+        const loadBlogsDetails = async () => {
+            try {
+                const res = await fetch(`/api/Blog/${blogId}`);
+                let blogCharacters = await res.json();
+                displayBlogs(blogCharacters);
+
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        loadBlogsDetails();
+
+        const displayBlogs = (blog) => {
+            const htmlStrings = `
+                    <div class="col-lg-12">
+                           <img style="width:100%" class="img-thumbnail" src="/content/blog/${blog.image}" />
+                           <h2 class="blog-post-title">${blog.title}</h2>
+                            <div class="blog-post-meta bg-light p-3 mb-3">
+                            @Html.Raw(Model.Body)
+                            </div>
+                    </div>
+
+            `;
+            blogList.innerHTML = htmlStrings
+        };
+    </script>
+}
