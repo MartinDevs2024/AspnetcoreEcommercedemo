@@ -4,7 +4,7 @@ const baseUrl = '/api/Blog';
 const sectionCard = document.querySelector("#card");
 const searchBar = document.getElementById("searchBar");
 const btnContainer = document.querySelector("#btn-container");
-let blogs = [];
+let blogsCharacters;
 let index = 0;
 let pages = [];
 
@@ -39,28 +39,28 @@ btnContainer.addEventListener('click', function (e) {
     setupUI();
 });
 
-//SearchBar
-searchBar.addEventListener('keyup', function (e) {
+//Search Function
+searchBar.addEventListener('keyup', (e) => {
     const searchString = e.target.value.toLowerCase();
-    const filterBlogs = blogs.filter(blog => {
-        return blog.category.toLowerCase().includes(searchString) ||
-            blog.title.toLowerCase().includes(searchString);
+    const filterBlogs = blogsCharacters.filter(blog => {
+        return blog.title.toLowerCase().includes(searchString) ||
+            blog.category.toLowerCase().includes(searchString);
     });
     displayPostItems(filterBlogs);
-
 });
 
+// Fetch the items
 const loadBlogs = async () => {
     try {
         const res = await fetch(baseUrl);
-        blogs = await res.json();
-        displayPostItems(blogs);
-        if (!res.ok) throw new Error(`${blogs.message} ${res.status}`);
-        return blogs;
+        blogsCharacters = await res.json();
+        if (!res.ok) throw new Error(`${blogsCharacters.message} ${res.status}`);
+        return blogsCharacters;
     } catch (err) {
         console.log(err);
     }
 }
+loadBlogs();
 
 //=============== Display Items to screen 
 
@@ -70,23 +70,52 @@ const displayPostItems = (blogs) => {
         return `
               <div class="card mb-4 posts">
                   <div class="item ${blog.category}">
-                        <img class="card-img-top img-fluid" src="/content/blog/${blog.image}" alt="${blog.title}" />
+                            <img class="card-img-top img-fluid" src="/content/blog/${blog.image}" alt="${blog.title}" />
                                
-                        <div class="card-body">
-                            <h2 class="card-title">${blog.title}</h2>
-                            <a asp-action="Detail" href="/UI/Blog/Details/${blog.id}" class="btn btn-primary">Read More</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            Posted on ${new Date(blog.created).toLocaleDateString()} by
-                            <a href="#">Martin</a>
-                        </div>
+                            <div class="card-body">
+                                <h2 class="card-title">${blog.title}</h2>
+                                <a asp-action="Detail" href="/UI/Blog/Details/${blog.id}" class="btn btn-primary">Read More</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                Posted on ${new Date(blog.created).toLocaleDateString()} by
+                                <a href="#">Martin</a>
+                            </div>
                     </div>
               </div>
               `;
     }).join('');
-    sectionCard.innerHTML = htmlString;
+    if (htmlString.length < 1) {
+        sectionCard.innerHTML = "<h2>Sorry, no blog matched your search</h2>";
+    } else {
+        sectionCard.innerHTML = htmlString;
+    }
+
 }
 loadBlogs();
+
+//Filter function
+function displayMenuButtons() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    //filter 
+    filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            const category = e.currentTarget.dataset.id;
+            const menuType = blogsCharacters.filter(function (blog) {
+                console.log(blog.category);
+                if (blog.category === category) {
+                    return blog;
+                }
+            });
+            if (category === 'all') {
+                displayPostItems(blogsCharacters);
+            } else {
+                displayPostItems(menuType);
+            }
+        })
+    })
+}
+
+displayMenuButtons();
 
 const paginate = (blogs) => {
     const itemsPerPage = 5;
