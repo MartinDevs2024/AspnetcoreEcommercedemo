@@ -24,6 +24,7 @@
     <!-- Alertify-->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
     <!--Datatable css-->
+    <link href="~/select2/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css" />
@@ -31,7 +32,9 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://kendo.cdn.telerik.com/2020.2.513/styles/kendo.default-v2.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.5.1/main.min.css" />
     <link href="~/styles/Layout/_AdminPanel.css" rel="stylesheet" />
     <link href="~/styles/Layout/_contact.css" rel="stylesheet" />
     <style>
@@ -61,8 +64,8 @@
                             </a>
                         </li>
                         @*<li class="nav-item">
-            <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">SpecialTags</a>
-        </li>*@
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="SpecialTags" asp-action="Index">SpecialTags</a>
+                            </li>*@
                         @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
                         {
                             <li class="nav-item dropdown">
@@ -102,6 +105,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js"></script>
+    <script src="~/select2/js/select2.full.js"></script>
+    <script src="~/js/script-custom-calendar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="https://kit.fontawesome.com/e19c476714.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
@@ -109,6 +114,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/combine/npm/fullcalendar@5.5.1"></script>
+    <script src="https://kendo.cdn.telerik.com/2020.2.513/js/kendo.all.min.js"></script>
     <script src="~/js/menuToggle.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)

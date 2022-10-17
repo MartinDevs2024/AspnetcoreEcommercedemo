@@ -14,6 +14,8 @@ namespace AspnetcoreEcommercedemo.Data
 
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
+        public DbSet<Appointment> Appointments { get; set; }
+
         public DbSet<Company> Companies { get; set; }
         public DbSet<ProductTypes> ProductTypes { get; set; }
         public DbSet<SpecialTag> SpecialTags { get; set; }
