@@ -75,7 +75,22 @@
     --grey-900: #0f172a;
 }
 
+/* heading-area */
+.heading {
+    padding-top: 7rem;
+    width: 95%;
+    border-bottom: .2rem solid rgba(0,0,0,.3);
+    margin: 0 auto;
+}
 
+    .heading span {
+        font-size: 2rem;
+        padding: 1rem 6rem;
+        color: #fff;
+        background: var(--blue);
+        border-top-right-radius: 3rem;
+        display: inline-block;
+    }
 
 
 a.navbar-brand {

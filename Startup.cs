@@ -39,7 +39,7 @@ namespace AspnetcoreEcommercedemo
 
             });
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
+                options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()
