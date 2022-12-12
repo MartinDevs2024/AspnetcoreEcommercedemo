@@ -64,15 +64,36 @@ const loadProducts = async () => {
 const displayProducts = (products) => {
     const htmlString = products.map((product) => {
         return `
-                          <div class="col-md-4">
-                               <div class="card">
-                                   <img class="card-img-top" width="40" src="${product.image}" alt="card image cap">
-                                   <div class="card-body">
-                                        <h5 class="card-title">${product.category}</h5>
-                                        <a href="/UI/Product" class="btn btn-primary">Go to Product</a>
-                                   </div>
-                              </div>
-                         </div>`;
+            <div class="owl-carousel owl-theme">
+                <div class="item">
+                <div class="product m-2">
+                <div class="product-header">
+                    <img src="${product.image}" alt="" width="250px">
+                    <ul class="icons">
+                        <span><i class="bx bx-heart"></i></span>
+                        <a href="cart.html"> <span><i class="bx bx-shopping-bag"></i></span>
+                        </a>
+                        <span><i class="bx bx-search"></i></span>
+                    </ul>
+                </div>
+                <div class="product-footer">
+                    <a href="product-details.html">
+                        <h5 class="card-title">${product.category}</h5>
+                    </a>
+                    <div class="rating">
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bxs-star"></i>
+                        <i class="bx bx-star"></i>
+                    </div>
+                    <h4 class="price">$ ${product.price}</h4>
+                    <a href="/UI/Product" class="btn btn-primary">Go to Product</a>
+                </div>
+            </div>
+           </div>
+       </div>
+            `;
     }).join('');
     newProduct.innerHTML = htmlString;
 }
