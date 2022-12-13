@@ -130,8 +130,24 @@
     <script src="~/js/menuToggle.js"></script>
     <script>
         $(document).ready(function () {
-            $('.owl-carousel').owlCarousel();
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            })
         });
+
     </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
