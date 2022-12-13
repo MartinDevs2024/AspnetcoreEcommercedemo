@@ -23,5 +23,6 @@ namespace AspnetcoreEcommercedemo.Data
         public DbSet<Products> Products { get; set; }
         public DbSet<SubComment> SubComments { get; set; }
         public DbSet<MyMessage> MyMessages { get; set; }
+        public DbSet<TodoList> TodoLists { get; set; }
     }
 }
