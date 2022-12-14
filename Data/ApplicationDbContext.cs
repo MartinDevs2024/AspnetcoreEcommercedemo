@@ -24,5 +24,6 @@ namespace AspnetcoreEcommercedemo.Data
         public DbSet<SubComment> SubComments { get; set; }
         public DbSet<MyMessage> MyMessages { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
+        public DbSet<Team> Teams { get; set; }
     }
 }

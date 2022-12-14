@@ -14,6 +14,6 @@ namespace AspnetcoreEcommercedemo.Models
         [Required]
         public string Title { get; set; }
 
-        public DateTime StartDate { get; set; } 
+        public DateTime StartDate { get; set; } = DateTime.Now;
     }
 }

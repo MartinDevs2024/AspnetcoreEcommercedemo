@@ -5,6 +5,18 @@
     {
       "library": "select2@4.0.13",
       "destination": "wwwroot/select2/"
+    },
+    {
+      "library": "nprogress@0.2.0",
+      "destination": "wwwroot/nprogress/"
+    },
+    {
+      "library": "simplebar@5.3.9",
+      "destination": "wwwroot/simplebar/"
+    },
+    {
+      "library": "jquery-circle-progress@1.2.2",
+      "destination": "wwwroot/jquery-circle-progress/"
     }
   ]
 }

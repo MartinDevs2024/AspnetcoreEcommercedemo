@@ -10,6 +10,7 @@
 */
 /* Global css */
 :root {
+    --grey-200: #e2e8f0;
     --color-primary: #5ec576;
     --color-secondary: #ffcb03;
     --color-tertiary: #ff585f;
@@ -75,7 +76,7 @@
     --grey-900: #0f172a;
 }
 
-/* heading-area */
+/* Global heading-area */
 .heading {
     padding-top: 7rem;
     width: 95%;
@@ -92,174 +93,16 @@
         display: inline-block;
     }
 
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/*=== Card style ========*/
-.card {
-    background: #222;
-    border: 1px solid #dd2476;
-    color: rgba(250, 250, 250, 0.8);
-    margin-bottom: 2rem;
-}
-
-    .card img {
-        height: 300px;
-        width: 100%;
-    }
-
-#btn-container {
+/*BreadCrumb -Area*/
+.page-hero {
+    min-height: 20vh;
     display: grid;
-    gap: 2rem;
-    margin-bottom: 4rem;
+    place-items: center;
+    background: var(--grey-200);
+    color: var(--grey-500);
 }
 
-.btn {
-    padding: 0.35rem 0.75rem;
-    letter-spacing: 1.6px;
-    font-size: 0.75rem;
-    color: var(--clr-white);
-    background: var(--clr-primary-5);
-    border-radius: var(--radius);
-    border-color: transparent;
-    text-transform: uppercase;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-#btn-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.page-btn {
-    width: 2rem;
-    height: 2rem;
-    background: var(--clr-primary-7);
-    border-color: transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0.5rem;
-    transition: var(--transition);
-}
-
-.active-btn {
-    background: var(--clr-primary-1);
-    color: var(--clr-white);
-}
-
-
-/*=== Pagination Buttons ===*/
-.prev-btn,
-.next-btn {
-    background: transparent;
-    border-color: transparent;
-    font-weight: bold;
-    text-transform: capitalize;
-    letter-spacing: var(--spacing);
-    margin: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-}
-/*=== Search Bar style ===*/
-
-#searchBar {
-    width: 100%;
-    height: 32px;
-    border-radius: 3px;
-    border: 1px solid #eaeaea;
-    padding: 5px 10px;
-    font-size: 12px;
-}
-
-#searchWrapper {
-    position: relative;
-}
-
-    #searchWrapper::after {
-        content: '🔍';
-        position: absolute;
-        top: 7px;
-        right: 15px;
-    }
-
-
-﻿ /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-﻿:root {
-    /* dark shades of primary color*/
-    --clr-primary-1: hsl(205, 86%, 17%);
-    --clr-primary-2: hsl(205, 77%, 27%);
-    --clr-primary-3: hsl(205, 72%, 37%);
-    --clr-primary-4: hsl(205, 63%, 48%);
-    /* primary/main color */
-    --clr-primary-5: hsl(205, 78%, 60%);
-    /* lighter shades of primary color */
-    --clr-primary-6: hsl(205, 89%, 70%);
-    --clr-primary-7: hsl(205, 90%, 76%);
-    --clr-primary-8: hsl(205, 86%, 81%);
-    --clr-primary-9: hsl(205, 90%, 88%);
-    --clr-primary-10: hsl(205, 100%, 96%);
-    /* darkest grey - used for headings */
-    --clr-grey-1: hsl(209, 61%, 16%);
-    --clr-grey-2: hsl(211, 39%, 23%);
-    --clr-grey-3: hsl(209, 34%, 30%);
-    --clr-grey-4: hsl(209, 28%, 39%);
-    /* grey used for paragraphs */
-    --clr-grey-5: hsl(210, 22%, 49%);
-    --clr-grey-6: hsl(209, 23%, 60%);
-    --clr-grey-7: hsl(211, 27%, 70%);
-    --clr-grey-8: hsl(210, 31%, 80%);
-    --clr-grey-9: hsl(212, 33%, 89%);
-    --clr-grey-10: hsl(210, 36%, 96%);
-    --clr-white: #fff;
-    --clr-red-dark: hsl(360, 67%, 44%);
-    --clr-red-light: hsl(360, 71%, 66%);
-    --clr-green-dark: hsl(125, 67%, 44%);
-    --clr-green-light: hsl(125, 71%, 66%);
-    --clr-black: #222;
-    --transition: all 0.3s linear;
-    --spacing: 0.1rem;
-    --radius: 0.75rem;
-    --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    --max-width: 1170px;
-    --fixed-width: 620px;
-    --white: #fff;
-    --black: #222;
-    --pink: #f60091;
-    --grey: #444;
-    --grey2: #959595;
-    --grey-alt: #d1e2e9;
-    --yellow: #ffd800;
-    --green: #59b210;
-    --primary-color: #333;
-    --secondary-color: #444;
-    --overlay-color: rgba(0,0,0,0.7);
-}
-
+﻿
 *,
 *::before,
 *::after {
@@ -308,30 +151,7 @@ li {
     padding: 10rem 0 5rem 0;
 }
 
-
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
+/* -- Showcase Area -- */
 
 .section-a {
     margin: 2rem 0;
@@ -353,63 +173,6 @@ a {
     .section-a p {
         margin: 1rem 0;
     }
-
-
-/* Banner Area */
-
-.site-main .site-banner {
-    background: url('../images/slide2.jpg') no-repeat;
-    background-position: center center;
-    background-size: cover;
-}
-
-    .site-main .site-banner .site-title h3 {
-        font-weight: 500;
-    }
-
-        .site-main .site-banner .site-title h3::after {
-            content: " ";
-            height: 2px;
-            color: white;
-            display: inline-block;
-            margin-left: 5%;
-            transform: translateY(-10px);
-        }
-
-    .site-main .site-banner .site-title h1 {
-        color: white;
-        font-weight: bold;
-    }
-
-    .site-main .site-banner .site-title h3 {
-        font-size: 5rem;
-        font-weight: bold;
-        color: white;
-    }
-
-    .site-main .site-banner .site-title h4 {
-        font-size: 1.5rem;
-    }
-
-    .site-main .site-banner .banner-image > img {
-        padding: 7rem 0;
-        width: 90rem;
-    }
-
-#outbox {
-    width: 400px;
-    text-align: center;
-}
-
-#date {
-    font-weight: 300;
-    font-size: 50px;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-
-/* End Banner Area */
 
 /* Product */
 .product-center {
@@ -517,99 +280,7 @@ a {
     margin-bottom: 1rem;
 }
 
-
-
-/* Card style*/
-
-.card {
-    background: #222;
-    border: 1px solid #dd2476;
-    color: rgba(250, 250, 250, 0.8);
-    margin-bottom: 2rem;
-}
-
-    .card img {
-        height: 300px;
-        width: 100%;
-    }
-
-#btn-container {
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 4rem;
-}
-
-.btn {
-    padding: 0.35rem 0.75rem;
-    letter-spacing: 1.6px;
-    font-size: 0.75rem;
-    color: var(--clr-white);
-    background: var(--clr-primary-5);
-    border-radius: var(--radius);
-    border-color: transparent;
-    text-transform: uppercase;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-#btn-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.page-btn {
-    width: 2rem;
-    height: 2rem;
-    background: var(--clr-primary-7);
-    border-color: transparent;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0.5rem;
-    transition: var(--transition);
-}
-
-.active-btn {
-    background: var(--clr-primary-1);
-    color: var(--clr-white);
-}
-
-/* Pagination Buttons*/
-.prev-btn,
-.next-btn {
-    background: transparent;
-    border-color: transparent;
-    font-weight: bold;
-    text-transform: capitalize;
-    letter-spacing: var(--spacing);
-    margin: 0.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-}
-/* Search Bar style*/
-
-#searchBar {
-    width: 100%;
-    height: 32px;
-    border-radius: 3px;
-    border: 1px solid #eaeaea;
-    padding: 5px 10px;
-    font-size: 12px;
-}
-
-#searchWrapper {
-    position: relative;
-}
-
-    #searchWrapper::after {
-        content: '🔍';
-        position: absolute;
-        top: 7px;
-        right: 15px;
-    }
-
-
-/* Testimonials */
+/* --Testimonials --*/
 .testimonial-center {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -667,7 +338,7 @@ a {
         margin-top: 1rem;
     }
 
-/* Brands */
+/* Brands-Area */
 .brands-center {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -737,7 +408,7 @@ section.cta .overlay {
 }
 
 /*-------------
-Contact Area 
+Send Message Area
 --------------*/
 .contact-area {
     padding: 100px;
@@ -790,7 +461,20 @@ Contact Area
             .contact-area ul.list-social li.social-google-plus a:hover {
                 background-color: #d73925;
             }
-  
+
+
+
+/*-- Contact Form --*/
+
+#contact p {
+    color: white;
+}
+
+    #contact p a {
+        color: white;
+    }
+
+
 
 /* ========= Footer ======== */
 .footer {
@@ -846,49 +530,17 @@ Contact Area
     }
 }
 
-/**sticky footer*/
-html.footer-sticky, .footer-sticky body {
-    height: 100%;
+/*=== Pagination Buttons ===*/
+.prev-btn,
+.next-btn {
+    background: transparent;
+    border-color: transparent;
+    font-weight: bold;
+    text-transform: capitalize;
+    letter-spacing: var(--spacing);
+    margin: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
 }
 
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: translate3d(0, 0px, 0);
-}
 
-a:hover {
-    text-decoration: none;
-    outline: 0 !important;
-}
-
-.back-to-top {
-    position: fixed;
-    display: block;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-    bottom: 10px;
-    right: 10px;
-    background: #eee;
-    color: #333;
-    line-height: 50px;
-    z-index: 9;
-    opacity: 0;
-    visibility: hidden;
-}
-
-    .back-to-top.show {
-        opacity: 1;
-        visibility: visible;
-        transform: translate3d(0, 0px, 0);
-        -webkit-transform: translate3d(0, 0px, 0);
-    }
-
-    .back-to-top i {
-        display: block;
-        font-size: 38px;
-        line-height: 50px;
-        text-align: center;
-    }
