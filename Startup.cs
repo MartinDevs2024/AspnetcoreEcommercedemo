@@ -46,6 +46,7 @@ namespace AspnetcoreEcommercedemo
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<IEmailSender, EmailSender>();
             services.AddTransient<ITeamRepository, TeamRepository>();
+            services.AddTransient<IContactsRepository, ContactsRepository>();
             services.AddTransient<IAppointmentService, AppointmentService>();
             services.AddTransient<IBlogRepository, BlogRepository>();
             services.AddTransient<IFileManager, FileManager>();

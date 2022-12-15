@@ -25,5 +25,6 @@ namespace AspnetcoreEcommercedemo.Data
         public DbSet<MyMessage> MyMessages { get; set; }
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Contacts> Contacts { get; set; }
     }
 }

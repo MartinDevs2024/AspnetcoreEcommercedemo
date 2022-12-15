@@ -543,4 +543,14 @@ Send Message Area
     cursor: pointer;
 }
 
+/*=== Scroll Buttons ===*/
 
+div.scroll {
+    background-color: #fed9ff;
+    width: auto;
+    height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 20px;
+}
