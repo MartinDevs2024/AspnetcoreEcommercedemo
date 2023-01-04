@@ -1,0 +1,205 @@
+﻿@model IEnumerable<AspnetcoreEcommercedemo.Models.TodoList>
+
+@{
+    ViewData["Title"] = "Index";
+    var Title = "MyTodoList";
+}
+
+<style>
+    /* ------------ header ------------ */
+    .header {
+        width: 100%;
+        height: 300px;
+        background-image: url('/Images/bg/bg2.jpg');
+        background-size: 100% 200%;
+        background-repeat: no-repeat;
+        border-radius: 15px 15px 0 0;
+        position: relative;
+    }
+
+    #date {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: #FFF;
+        font-size: 25px;
+        font-family: 'Titillium Web', sans-serif;
+    }
+
+    .title {
+        color: white;
+        letter-spacing: 10px;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .title {
+        color: white;
+        letter-spacing: 10px;
+        font-size: 50px;
+        font-weight: bold;
+    }
+
+    .new-todo {
+        width: 100%;
+        height: 70px;
+        background-color: hsl(235, 24%, 19%);
+        border-radius: 6px;
+        display: flex;
+        color: white;
+    }
+
+    #new-todo-input {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+    }
+
+    .new-todo-input input {
+        width: 100%;
+        padding: 10px 0px;
+        font-size: 18px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: hsl(234, 39%, 85%);
+    }
+
+    .checked {
+        text-decoration: line-through;
+        color: hsl(233, 14%, 35%);
+    }
+</style>
+
+
+<div class="d-flex" id="wrapper">
+    <partial name="_AdminNavbar" />
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <a class="btn btn-warning float-right" asp-area="Admin" asp-controller="MyTodoList" asp-action="Create">Create new todo </a>
+        </nav>
+        <div class="container-fluid">
+            <div class="text-center mt-3">
+                <h2>@Title</h2>
+                <hr />
+            </div>
+            <div class="header">
+                <div class="clear">
+                    <i class="fa fa-refresh"></i>
+                </div>
+                <div id="date"></div>
+            </div>
+            <p>
+                <input id="searchbar" type="text" class="new-todo-input form-control " placeholder="Search content.." />
+            </p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width:60%">
+                                Title
+                            </th>
+                            <th>Create it Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Title
+                                </td>
+                                <td>
+                                    @item.StartDate.ToLocalTime()
+                                </td>
+                                <td>
+                                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.ItemId">Edit</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script>
+        //Set upt the time
+        const dateElement = document.getElementById("date");
+        const options = { weekday: "long", month: "short", day: "numeric" };
+        const today = new Date();
+
+        dateElement.innerHTML = today.toLocaleDateString("en-US", options);
+
+        //Check the todo
+        const trs = document.getElementsByTagName("tr");
+        for (let i = 0; i < trs.length; i++) {
+            let tr = trs[i];
+            tr.addEventListener("click", function (e) {
+                let td = e.target.closest("td");
+                if (td.classList.contains("checked")) {
+                    td.classList.remove("checked");
+                } else {
+                    td.classList.add("checked");
+                }
+            })
+        }
+
+        //Apply the searchbar
+        let searchbar = document.getElementById("searchbar");
+        searchbar.addEventListener('keyup', filterNames);
+
+        function filterNames() {
+            let filterValue = document.getElementById("searchbar").value.toUpperCase();
+
+            let todosName = document.getElementsByTagName("tr");
+
+            for (let i = 0; i < todosName.length; i++) {
+                let a = todosName[i];
+
+                if (a.innerHTML.toLocaleUpperCase().indexOf(filterValue) > -1) {
+                    a.style.display = "";
+                } else {
+                    a.style.display = "none";
+                }
+            }
+        }
+
+        //Check for updates
+      $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+
+    </script>
+
+
+
+}
+
+
+
+

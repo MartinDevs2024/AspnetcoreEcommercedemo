@@ -1,0 +1,72 @@
+﻿@model IEnumerable<AspnetcoreEcommercedemo.Models.ProductTypes>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<div class="d-flex" id="wrapper">
+    <partial name="_AdminNavbar" />
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <a class="btn btn-warning float-right" asp-area="Admin" asp-controller="ProductTypes" asp-action="Create">Add-ProductType</a>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="text-info">Product Type List</h2>
+                </div>
+                <div class="col-lg-6 text-right">
+                    <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>New ProductType</a>
+                </div>
+            </div>
+            <br />
+
+            <div>
+                <table class="table table-striped border">
+                    <thead>
+                        <tr class="table-info">
+                            <th>
+                                @Html.DisplayNameFor(c => c.ProductType)
+                            </th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.ProductType</td>
+                                <td>
+                                    <partial name="_ButtonPartial" model="@item.Id" />
+                                </td>
+                            </tr>
+
+                        }
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var save = '@TempData["save"]'
+            if (save != '') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if (edit != '') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del != '') {
+                alertify.err(del);
+            }
+        })
+    </script>
+}

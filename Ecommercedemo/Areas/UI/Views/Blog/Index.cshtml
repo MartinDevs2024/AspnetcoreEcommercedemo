@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Blog>
+
+@{
+    ViewBag.Title = "Blog Website";
+    ViewBag.Description = "This Blog Has Everything";
+    ViewBag.Keywords = "Blog programing travel photography";
+}
+<style>
+    /*  */
+    .notFound {
+        grid-template-columns: 1fr !important;
+        color: var(--tenne-tawny);
+        font-size: 1.8rem;
+        font-weight: 600;
+        width: 100%;
+    }
+</style>
+
+<section class="page-hero">
+    <div class="section-center">
+        <h3 class="page-hero-title">Home / MyBlog</h3>
+    </div>
+</section>
+<div class="container-fluid">
+    <!-- page hero -->
+    <div class="row">
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-3">
+            <!-- Categories Widget -->
+            <div class="card my-3">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group" id="searchWrapper">
+                        <input type="text" class="form-control"
+                               name="searchBar"
+                               id="searchBar"
+                               placeholder="Search for...">
+                    </div>
+                </div>
+                <h5 class="card-header">Categories</h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <button type="button" class="btn btn-primary filter-btn" data-id="all">
+                                All
+                            </button>
+                            <button type="button" class="btn btn-success filter-btn" data-id="news">
+                                News
+                            </button>
+                            <button type="button" class="btn btn-success filter-btn" data-id="technology">
+                                Technology
+                            </button>
+                            <button type="button" class="btn btn-success filter-btn" data-id="music">
+                                Music
+                            </button>
+                            <button type="button" class="btn btn-success filter-btn" data-id="sports">
+                                Sports
+                            </button>
+                            <button type="button" class="btn btn-success btn-rounded filter-btn" data-id="movies">
+                                Movies
+                            </button>
+                            <button type="button" class="btn btn-success btn-rounded filter-btn" data-id="places">
+                                Places
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Blog Entries Column -->
+        <div class="my-4 col-md-6">
+            <!-- Blog Post -->
+            <div id="card"></div>
+            <div id="btn-container"></div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+@section scripts{
+    <script src="~/js/blogList.js"></script>
+}

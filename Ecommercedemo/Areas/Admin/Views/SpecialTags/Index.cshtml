@@ -1,0 +1,67 @@
+﻿@model IEnumerable<AspnetcoreEcommercedemo.Models.SpecialTag>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="d-flex" id="wrapper">
+    <partial name="_AdminNavbar" />
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <a class="btn btn-warning float-right" asp-area="Admin" asp-controller="SpecialTags" asp-action="Create">Add-SpecialTag</a>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="text-info">SpecialTag List</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-action="Create" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Tag Name</a>
+                </div>
+            </div>
+            <br />
+            <div>
+                <table class="table table-striped border">
+                    <tr class="table-info">
+                        <th>
+                            @Html.DisplayNameFor(c => c.Name)
+                        </th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>
+                                <partial name="_TagPageButtonPartial" model="@item.Id" />
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}

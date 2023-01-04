@@ -1,0 +1,53 @@
+﻿let dataTable;
+
+$(document).ready(function () {
+    loadDataTable();
+});
+
+function loadDataTable() {
+    dataTable = $("#mymessages").DataTable({
+        "ajax": {
+            "url": "/Admin/MyMessages/GetAll"
+        },
+        "columns": [
+            { "data": "name", "width": "25%" },
+            { "data": "email", "width": "25%" },
+            { "data": "message", "width": "25%" },
+            {
+                "data": "id",
+                "render": function (data) {
+                    return `
+                            <a onclick=Delete("/Admin/MyMessages/Delete/${data}") class="btn btn-success text-white" style="cursor:pointer">
+                                <i class="fas fa-trash-alt"></i> &nbsp;
+                            </a>
+                            </div>`;
+                }, "width": "20%"
+            }
+        ]
+    });
+}
+
+function Delete(url) {
+    swal({
+        title: "Are you sure you want to Delete?",
+        text: "You will not be able to restore the data!",
+        icon: "warning",
+        buttons: true,
+        dangeMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            $.ajax({
+                type: "DELETE",
+                url: url,
+                success: function (data) {
+                    if (data.success) {
+                        toastr.success(data.message);
+                        dataTable.ajax.reload();
+                    } else {
+                        toastr.error(data.message);
+                    }
+                }
+            })
+        }
+    });
+}
