@@ -1,5 +1,6 @@
 ﻿using AspnetcoreEcommercedemo.DataAccess.Data;
 using AspnetcoreEcommercedemo.DataAccess.Repository.IRepository;
+using AspnetcoreEcommercedemo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +9,17 @@ using System.Threading.Tasks;
 
 namespace AspnetcoreEcommercedemo.DataAccess.Repository
 {
-    public class UnitOfWork : IUnitOfWork
+    public class SpecialTagRepository : Repository<SpecialTag>, ISpecialTagRepository
     {
         private readonly ApplicationDbContext _db;
 
-        public UnitOfWork(ApplicationDbContext db)
+        public SpecialTagRepository(ApplicationDbContext db): base(db)
         {
             _db = db;
-            ProductTypes = new ProductTypesRepository(_db);
-            SpecialTags = new SpecialTagRepository(_db);
         }
-        public IProductTypesRepository ProductTypes { get; private set; }
-
-        public ISpecialTagRepository SpecialTags { get; private set; }
-
-        public void Save()
+        public void Update(SpecialTag obj)
         {
-            _db.SaveChanges();
+            _db.SpecialTags.Update(obj);
         }
     }
 }
