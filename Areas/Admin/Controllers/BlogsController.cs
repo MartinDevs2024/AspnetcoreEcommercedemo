@@ -1,8 +1,9 @@
 ﻿using AspnetcoreEcommercedemo.Interfaces;
 using AspnetcoreEcommercedemo.Models;
+using AspnetcoreEcommercedemo.Models.ViewModels;
 using AspnetcoreEcommercedemo.Utility;
-using AspnetcoreEcommercedemo.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,11 +18,15 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
     {
         private readonly IBlogRepository _repo;
         private readonly IFileManager _fileManager;
+        private readonly IPhotoService _photoService;
 
-        public BlogsController(IBlogRepository repo, IFileManager fileManager)
+        public BlogsController(IBlogRepository repo, 
+            IFileManager fileManager,
+            IPhotoService photoService)
         {
             _repo = repo;
             _fileManager = fileManager;
+            _photoService = photoService;
         }
         public IActionResult Index()
         {
@@ -47,7 +52,7 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
                     Id = blog.Id,
                     Title = blog.Title,
                     Body = blog.Body,
-                    CurrentImage = blog.Image,
+                  
                     Description = blog.Description,
                     Category = blog.Category,
                     Tags = blog.Tags
@@ -67,15 +72,7 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
                 Category = vm.Category,
                 Tags = vm.Tags
             };
-            if (vm.Image == null)
-            {
-                blog.Image = vm.CurrentImage;
-            }
-            else
-            {
-                blog.Image = await _fileManager.SaveImage(vm.Image);
-            }
-
+         
             if (blog.Id > 0)
                 _repo.UpdateBlog(blog);
             else
@@ -85,14 +82,24 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
             else
                 return View(blog);
         }
-
-        [HttpGet("/Image/{image}")]
-        [ResponseCache(CacheProfileName = "Monthly")]
-        public IActionResult Image(string image)
+        //Adding Photos 
+        [HttpPost("add-photo")]
+        public async Task<ActionResult<Photo>> AddPhoto(int? id, IFormFile file)
         {
-            var mine = image.Substring(image.LastIndexOf('.') + 1);
-            return new FileStreamResult(_fileManager.ImageStream(image), $"image/{mine}");
+            var blog = _repo.GetBlog((int)id);
+            var result = await _photoService.AddPhotoAsync(file);
+            if (result.Error != null) return BadRequest(result.Error.Message);
+
+            var photo = new Photo
+            {
+                Url = result.SecureUrl.AbsoluteUri,
+                PublicId = result.PublicId
+            };
+            if (blog.Photos.Count == 0) photo.IsMain = true;
+            blog.Photos.Add(photo);
+            return RedirectToAction("Index");
         }
+
 
         #region 
         [HttpGet]

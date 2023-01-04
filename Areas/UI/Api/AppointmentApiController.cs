@@ -1,6 +1,6 @@
-﻿using AspnetcoreEcommercedemo.Services;
+﻿using AspnetcoreEcommercedemo.Models.ViewModels;
+using AspnetcoreEcommercedemo.Services;
 using AspnetcoreEcommercedemo.Utility;
-using AspnetcoreEcommercedemo.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;

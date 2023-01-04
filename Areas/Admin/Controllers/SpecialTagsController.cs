@@ -1,4 +1,4 @@
-﻿using AspnetcoreEcommercedemo.Data;
+﻿using AspnetcoreEcommercedemo.DataAccess.Data;
 using AspnetcoreEcommercedemo.Models;
 using AspnetcoreEcommercedemo.Utility;
 using Microsoft.AspNetCore.Authorization;

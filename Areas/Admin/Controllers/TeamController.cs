@@ -1,5 +1,5 @@
 ﻿using AspnetcoreEcommercedemo.Interfaces;
-using AspnetcoreEcommercedemo.ViewModels;
+using AspnetcoreEcommercedemo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

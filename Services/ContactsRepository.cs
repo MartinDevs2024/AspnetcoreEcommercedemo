@@ -1,4 +1,4 @@
-﻿using AspnetcoreEcommercedemo.Data;
+﻿using AspnetcoreEcommercedemo.DataAccess.Data;
 using AspnetcoreEcommercedemo.Interfaces;
 using AspnetcoreEcommercedemo.Models;
 using System;

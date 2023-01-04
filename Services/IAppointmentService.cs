@@ -1,4 +1,5 @@
-﻿using AspnetcoreEcommercedemo.ViewModels;
+﻿
+using AspnetcoreEcommercedemo.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

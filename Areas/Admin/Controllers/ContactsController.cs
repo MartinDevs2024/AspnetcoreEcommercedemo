@@ -1,5 +1,5 @@
 ﻿using AspnetcoreEcommercedemo.Interfaces;
-using AspnetcoreEcommercedemo.ViewModels;
+using AspnetcoreEcommercedemo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -84,9 +84,6 @@ namespace AspnetcoreEcommercedemo.Areas.Admin.Controllers
             var mine = contactPhoto.Substring(contactPhoto.LastIndexOf('.') + 1);
             return new FileStreamResult(_fileManager.ImageStream(contactPhoto), $"contactPhoto/{mine}");
         
-        
         }
-
-
     }
 }

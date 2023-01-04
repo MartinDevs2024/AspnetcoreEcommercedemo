@@ -1,4 +1,4 @@
-using AspnetcoreEcommercedemo.Data;
+using AspnetcoreEcommercedemo.DataAccess.Data;
 using AspnetcoreEcommercedemo.Interfaces;
 using AspnetcoreEcommercedemo.Services;
 using AspnetcoreEcommercedemo.Utility;
@@ -39,7 +39,7 @@ namespace AspnetcoreEcommercedemo
 
             });
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
+                options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders()

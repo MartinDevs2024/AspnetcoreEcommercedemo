@@ -1,6 +1,6 @@
-﻿using AspnetcoreEcommercedemo.Data;
+﻿using AspnetcoreEcommercedemo.DataAccess.Data;
 using AspnetcoreEcommercedemo.Models;
-using AspnetcoreEcommercedemo.ViewModels;
+using AspnetcoreEcommercedemo.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;

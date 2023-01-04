@@ -1,5 +1,4 @@
 ﻿using System;
-using AspnetcoreEcommercedemo.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -15,6 +14,7 @@ namespace AspnetcoreEcommercedemo.Areas.Identity
         public void Configure(IWebHostBuilder builder)
         {
             builder.ConfigureServices((context, services) => {
+
             });
         }
     }
